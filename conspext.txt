@@ -1,0 +1,5 @@
+npx create-react-app название нижним регистром и только буквы но можно еще тире --template typescript
+npm run start для запуска приложения в режиме разработки (dev)
+npm run built создание сборки всех файлов проекта в один(js файл)
+function createRoot из react-dom/client создает корень приложения в котором можно рендерить компоненты 
+ 
