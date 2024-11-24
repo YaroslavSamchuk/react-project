@@ -1,42 +1,28 @@
-import { Product } from "./Product"
+import { ProductsList } from "./ProductsList"
+import { useState } from "react"
+
+//  useState -> [state, setState]
+// [name, setName] = [state, setState]
+// name = 10 - неправильно
+// setName(10) - правильно
+
+// useState -> [state, setState]
+// state - состояние, 10, "", {}, []. 
+// setState - функция, которая изменяет состояние
+
 
 export function AppComponent(){
     const product = "product2"
-    const products = [
-        {
-            name: "product1",
-            price: 15,
-            id: 0
-        },
-        {
-            name: "product2",
-            price: 20,
-            id: 1
-        },
-        {
-            name: "product3",
-            price: 25,
-            id: 2
-        },
-        {
-            name: "product4",
-            price: 30,
-            id: 3
-        },
-    ]
+    // const [count, setCount] = useState(0) // useState принимает инициальное значение
+    
+
     return (
         <div>
             Hello worlda
             <h1>Hello woda</h1>
             <h1>{product}</h1>
-            {products.map((product) => {
-                // key - специальный ключ (id), который используеться при отображении массивов
-                // этот ключ позваляет определить, какой элемент был удален добавлен и т. п.
-                return <Product 
-                        name={product.name}
-                        price={product.price}
-                        key={product.id}></Product>
-            })}
+            
+            <ProductsList />
         </div>
     )
 }
