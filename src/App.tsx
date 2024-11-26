@@ -1,4 +1,5 @@
 import { Layout } from "./Layout"
+import { Main } from "./Main"
 import { ProductsList } from "./ProductsList"
 import { useState } from "react"
 
@@ -13,19 +14,9 @@ import { useState } from "react"
 
 
 export function AppComponent(){
-    const product = "product2"
-    // const [count, setCount] = useState(0) // useState принимает инициальное значение
-    
-
     return (
-        <div>
-            <Layout>
-                Hello worlda
-                <h1>Hello woda</h1>
-                <h1>{product}</h1>
-                
-                <ProductsList></ProductsList>
-            </Layout>
-        </div>
+        <Layout>
+            <Main/>
+        </Layout>
     )
 }

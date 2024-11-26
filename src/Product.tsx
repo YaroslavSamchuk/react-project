@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import "./Product.css"
+
 interface IProductProps{
     name: string,
     price: number
@@ -19,15 +21,12 @@ export function Product(props: IProductProps){
         }
     }
     return( 
-        <div>
-            <h1>{props.name}</h1>
-            <h2>{props.price}</h2>
-            <h2>Amount: {amount}</h2>
-            <button onClick={removeOneProduct}>
-                -
-            </button>
-            <button onClick={addOneProduct}>
-                +
+        <div className="product">
+            <h1 className="name">{props.name}</h1>
+            <span className="amount">{amount}</span>
+            <h2 className="price">{props.price}</h2>
+            <button className="purchase-btn">
+                купить
             </button>
         </div>
     )
