@@ -42,10 +42,6 @@ export function Header(){
                     </button>
                 </header>      
                         
-                <h1>{product}</h1>
-                
-                
-                
         </div>
     )
 }

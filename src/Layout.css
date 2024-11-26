@@ -10,5 +10,6 @@
     background-color: #FAF0E6;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
