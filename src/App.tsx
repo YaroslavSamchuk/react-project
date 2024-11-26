@@ -1,6 +1,7 @@
 import { Layout } from "./Layout"
 import { ProductsList } from "./ProductsList"
 import { useState } from "react"
+import { Footer } from './Footer'
 
 //  useState -> [state, setState]
 // [name, setName] = [state, setState]
@@ -25,6 +26,7 @@ export function AppComponent(){
                 <h1>{product}</h1>
                 
                 <ProductsList></ProductsList>
+                <Footer></Footer>
             </Layout>
         </div>
     )
