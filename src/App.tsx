@@ -1,3 +1,4 @@
+import { Layout } from "./Layout"
 import { ProductsList } from "./ProductsList"
 import { useState } from "react"
 
@@ -18,11 +19,13 @@ export function AppComponent(){
 
     return (
         <div>
-            Hello worlda
-            <h1>Hello woda</h1>
-            <h1>{product}</h1>
-            
-            <ProductsList />
+            <Layout>
+                Hello worlda
+                <h1>Hello woda</h1>
+                <h1>{product}</h1>
+                
+                <ProductsList></ProductsList>
+            </Layout>
         </div>
     )
 }
