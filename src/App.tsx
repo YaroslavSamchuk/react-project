@@ -1,4 +1,5 @@
 import { Layout } from "./Layout"
+import { Main } from "./Main"
 import { ProductsList } from "./ProductsList"
 import { useState } from "react"
 import { Footer } from './Footer'

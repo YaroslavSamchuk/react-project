@@ -1,0 +1,30 @@
+.product{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFD9B3;
+    width: 163px;
+    height: 180px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.5);
+    /* border: 5px; */
+    
+}
+
+.price {
+    color: #98503D;
+}
+
+.purchase-btn {
+    background-color: #FFD9B3;
+    border-radius: 16px;
+    padding: 5px;
+    width: 80px;
+    height: 20px;
+    transform: translate(0%, 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

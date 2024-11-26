@@ -1,4 +1,5 @@
 import { Product } from "./Product"
+import "./ProductsList.css"
 
 export function ProductsList(){
     const products = [
@@ -24,14 +25,14 @@ export function ProductsList(){
         },
     ]
     return (
-        <div>
+        <div className="products">
             {products.map((product) => {
                 // key - специальный ключ (id), который используеться при отображении массивов
                 // этот ключ позваляет определить, какой элемент был удален добавлен и т. п.
                 return <Product 
                         name={product.name}
                         price={product.price}
-                        key={product.id}></Product>
+                        key={product.id} />
             })}
         </div>
     )
