@@ -23,6 +23,7 @@ export function AppComponent(){
         <div>
             <Layout>
                 <Header></Header>
+                <Main></Main>
                 <Footer></Footer>
             </Layout>
         </div>
