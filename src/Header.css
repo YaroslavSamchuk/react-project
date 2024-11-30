@@ -1,56 +1,131 @@
 header{
+    margin-top: 15px;
     background-color: white;
-    margin: auto;
-    /* margin-top: 20px; */
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 20px; */ 
     width: 80%;
     height: 85px;
     border-radius: 16px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    box-shadow: 0px 7px 5px 0px rgba(147, 147, 147, 0.75);
 }
 
-.imageLogo{
+.logo{
     width: 75px;
     height: 75px;
+    /* filter: box-shadow(0px 7px 5px 0px rgba(147, 147, 147, 0.75)); */
+    filter: drop-shadow(0px 7px 5px  rgba(147, 147, 147, 0.75));
+    stroke: none
 }
 
 .categories{
     display: flex;
     align-items: center;
+    /* justify-content: space-between; */
     background-color: #EBE7E7;
     border-radius: 16px;
+    border: none;
+    width: 150px;
+    height: 50px;
+    box-shadow: 0px 7px 5px 0px rgba(147, 147, 147, 0.75);
+}
+
+.categoriesSvg{
+    display: flex;
+    margin-left: 15px;
+}
+
+.categoriesText{
+    display: flex;
+    margin-left: 23px;
+    font-size: 17px;
 }
 
 
 
-
-
+    
 .searchBar input {
     width: 600px;
     height: 50px;
+    border: none;
     border-radius: 16px;
     background-color: #EBE7E7;
     color: gray;
     padding: 20px;
+    box-shadow: 0px 7px 5px 0px rgba(147, 147, 147, 0.75);
 }
 
-.searchBar svg{
+.searchBar button{
+    border: none;
     position: absolute;
     margin-left: -50px;
     margin-top: 10px ;
 }
 
 .cart{
-
-
+    width: 150px;
+    height: 50px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    border: none;
+    box-shadow: 0px 7px 5px 0px rgba(147, 147, 147, 0.75);
+    
 }
 
 
+.cart:hover{
+    background-color: #C6BBBB;
+    cursor: pointer;
+}
+.cart:active{
+    background-color: #FFFFFF;
+    cursor: pointer;
+    border: 1px solid black;
+}
 
-.ImageIcon{
+.categories:hover{
+    background-color: #C6BBBB;
+    cursor: pointer;
+}
+
+.categories:active{
+    background-color: #FFFFFF;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+
+.cartSvg{
+    display: flex;
+    margin-left: 15px;
+}
+
+.cartText{
+    display: flex;
+    margin-left: 23px;
+    font-size: 17px;
+}
+
+
+.ImageIcon {
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    /* border-radius: 50%; */
+    /* box-shadow: 0px 7px 5px 0px rgba(147, 147, 147, 0.75); */
+    
+}
+
+.ImageIcon img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    
+    box-shadow: 0px 7px 5px 0px rgba(147, 147, 147, 0.75);
 }
+
