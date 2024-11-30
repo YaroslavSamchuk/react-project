@@ -4,26 +4,17 @@ import "./Product.css"
 
 interface IProductProps{
     name: string,
-    price: number
+    price: number,
+    img: string
 }
 
 export function Product(props: IProductProps){
-    const [amount, setAmount] = useState(1)
-    function addOneProduct() {
-        setAmount(amount + 1)
-        
-    }
-    function removeOneProduct() {
-        if (amount > 1) {
-            setAmount(amount - 1)
-        } else {
-            alert("You have less than one product!")
-        }
-    }
     return( 
         <div className="product">
             <h1 className="name">{props.name}</h1>
-            <span className="amount">{amount}</span>
+            <div className="product-image">
+                <img src={props.img} alt="" />
+            </div>
             <h2 className="price">{props.price}</h2>
             <button className="purchase-btn">
                 купить
