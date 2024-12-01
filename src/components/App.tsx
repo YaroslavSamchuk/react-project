@@ -1,9 +1,7 @@
-import { Layout } from "./Layout"
-import { Main } from "./Main"
-import { ProductsList } from "./ProductsList"
-import { useState } from "react"
-import { Footer } from './Footer'
-import { Header } from "./Header"
+import { Layout } from "./Layout/Layout"
+import { Main } from "./Main/Main"
+import { Footer } from './Footer/Footer'
+import { Header } from "./Header/Header"
 
 //  useState -> [state, setState]
 // [name, setName] = [state, setState]
