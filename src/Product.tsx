@@ -15,9 +15,9 @@ export function Product(props: IProductProps){
             <div className="product-image">
                 <img src={props.img} alt="" />
             </div>
-            <h2 className="price">{props.price}</h2>
+            <h2 className="price">Price: {props.price}</h2>
             <button className="purchase-btn">
-                купить
+                Купить
             </button>
         </div>
     )
