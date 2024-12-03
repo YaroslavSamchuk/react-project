@@ -74,7 +74,8 @@ export function ProductsList(){
                         name={product.name}
                         img={product.img}
                         price={product.price}
-                        key={product.id} />
+                        key={product.id}
+                        id={product.id} />
             })}
         </div>
     )

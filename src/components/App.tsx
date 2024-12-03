@@ -2,6 +2,13 @@ import { Layout } from "./Layout/Layout"
 import { Main } from "./Main/Main"
 import { Footer } from './Footer/Footer'
 import { Header } from "./Header/Header"
+import {
+    BrowserRouter,
+    Routes,
+    Route
+} from "react-router-dom"
+import { ProductsList } from "./ProductsList/ProductsList"
+import { ProductPage } from "./ProductPage/ProductPage"
 
 //  useState -> [state, setState]
 // [name, setName] = [state, setState]
@@ -19,11 +26,14 @@ export function AppComponent(){
 
     return (
         <div>
-            <Layout>
-                <Header></Header>
-                <Main></Main>
-                <Footer></Footer>
-            </Layout>
+            <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout></Layout>}>
+                    <Route path="/products" element={<ProductsList></ProductsList>}></Route>
+                    <Route path = "/product/:id" element = {<ProductPage></ProductPage>}> </Route>
+                </Route>
+            </Routes>
+            </BrowserRouter>
         </div>
     )
 }

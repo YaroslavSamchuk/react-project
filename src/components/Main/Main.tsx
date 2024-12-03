@@ -1,9 +1,15 @@
 import './Main.css'
-import { ProductsList } from '../ProductsList/ProductsList'
-export function Main() {
+// import { ProductsList } from '../ProductsList/ProductsList'
+import { ReactNode } from 'react'
+
+interface IMainProps{
+    children?: ReactNode
+}
+
+export function Main(props: IMainProps) {
     return (
         <div className='container'>
-                <ProductsList/>
+            {props.children}
         </div>
     )
 }
