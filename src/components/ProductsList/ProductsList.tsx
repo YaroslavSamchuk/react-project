@@ -50,7 +50,6 @@ export function ProductsList(){
             const products = await response.json()
             setFilteredProducts(products)
             console.log(products)
-
         }
         fetchProducts()
     }, [])
@@ -70,26 +69,31 @@ export function ProductsList(){
 
     return (
         <div className="products">
-            <select onChange={(event) => {
-                const selectedValue = event.target.value
-                setSelectedCategory(selectedValue)
-            }}>
-                <option value="All">All</option>
-                <option value="Cutie-pies">Cutie-pies</option>
-                <option value="Grumpy">Grumpy</option>
-                <option value="Hungry">Hungry</option>
-                <option value="Proud">Proud</option>
-            </select>
-            {filteredProducts.map((product) => {
-                // key - специальный ключ (id), который используеться при отображении массивов
-                // этот ключ позваляет определить, какой элемент был удален добавлен и т. п.
-                return <Product 
-                        name={product.title}
-                        img={product.image}
-                        price={product.price}
-                        key={product.id}
-                        id={product.id} />
-            })}
+            <div className="selectDiv">
+                <select className="selectMenu" onChange={(event) => {
+                    const selectedValue = event.target.value
+                    setSelectedCategory(selectedValue)
+                }}>
+                    <option value="All">All</option>
+                    <option value="Cutie-pies">Cutie-pies</option>
+                    <option value="Grumpy">Grumpy</option>
+                    <option value="Hungry">Hungry</option>
+                    <option value="Proud">Proud</option>
+                </select>
+            </div>
+            
+            <div className="productsDiv">
+                {filteredProducts.map((product) => {
+                    // key - специальный ключ (id), который используеться при отображении массивов
+                    // этот ключ позваляет определить, какой элемент был удален добавлен и т. п.
+                    return <Product 
+                            name={product.title}
+                            img={product.image}
+                            price={product.price}
+                            key={product.id}
+                            id={product.id} />
+                })}
+            </div>
         </div>
     )
 }

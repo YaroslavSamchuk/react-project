@@ -14,7 +14,7 @@ export function Product(props: IProductProps){
         
         <div className="product">
             <Link to={`/product/${props.id}`}>
-            <h1 className="name">{props.name}</h1>
+            <h1 className="name">{props.name.slice(0,20)}...</h1>
             <div className="product-image">
                 <img src={props.img} alt="" />
             </div>

@@ -1,7 +1,8 @@
 .container {
     background-color: #FBFBFB;
     width: 1320px;
-    height: 800px;
+    /* height:  */
+    min-height: calc(100vh - 75px - 85px - 15px - 20px);
     padding: 20px;
     margin: 0 auto;
     margin-top: 20px;
