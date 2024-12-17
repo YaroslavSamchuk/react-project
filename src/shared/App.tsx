@@ -7,8 +7,11 @@ import {
     Routes,
     Route
 } from "react-router-dom"
-import { ProductsList } from "./ProductsList/ProductsList"
-import { ProductPage } from "./ProductPage/ProductPage"
+
+
+import { ProductListPage } from "../pages/ProductListPage/ProductListPage"
+import { ProductPage } from "../pages/ProductPage/ProductPage"
+import { MainPage } from "../pages/MainPage/MainPage"
 
 //  useState -> [state, setState]
 // [name, setName] = [state, setState]
@@ -29,8 +32,9 @@ export function AppComponent(){
             <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout></Layout>}>
-                    <Route path="/products" element={<ProductsList></ProductsList>}></Route>
-                    <Route path = "/product/:id" element = {<ProductPage></ProductPage>}> </Route>
+                    <Route path="/products" element={<ProductListPage></ProductListPage>}></Route>
+                    <Route path = "/product/:id" element = {<ProductPage></ProductPage>}></Route>
+                    <Route path = "/" element = {<MainPage></MainPage>}></Route>
                 </Route>
             </Routes>
             </BrowserRouter>

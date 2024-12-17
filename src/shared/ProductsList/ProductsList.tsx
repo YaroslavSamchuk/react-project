@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 
-import { Product } from "../Product/Product"
+
 import "./ProductsList.css"
 import { useProducts } from "../../hooks/useProducts"
+import { ProductCard } from "./ProductCard/ProductCard"
 
 // https://fakestoreapi.com/products/categories
 
@@ -43,7 +44,7 @@ export function ProductsList(){
                 {filteredProducts.map((product) => {
                     // key - специальный ключ (id), который используеться при отображении массивов
                     // этот ключ позваляет определить, какой элемент был удален добавлен и т. п.
-                    return <Product 
+                    return <ProductCard 
                             name={product.title}
                             img={product.image}
                             price={product.price}

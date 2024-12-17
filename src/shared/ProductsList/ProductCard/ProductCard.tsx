@@ -1,15 +1,15 @@
 
 import { Link } from "react-router-dom"
-import "./Product.css"
+import "./ProductCard.css"
 
-interface IProductProps{
+interface IProductCardProps{
     name: string,
     price: number,
     img: string
     id: number
 }
 
-export function Product(props: IProductProps){
+export function ProductCard(props: IProductCardProps){
     return( 
         
         <div className="product">
