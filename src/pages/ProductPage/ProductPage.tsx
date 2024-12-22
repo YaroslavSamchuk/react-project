@@ -1,19 +1,26 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 import { useProductById } from "../../hooks/useProductById"
+import "./ProductPage.css"
 
-export function ProductPage (){
+export function ProductPage() {
     const params = useParams()
-    // NaN почитать
-    const {product} = useProductById(Number(params.id))
+    const { product } = useProductById(Number(params.id))
 
     return (
-        <div className="product">
-            <h1>Product: {product?.title}</h1>
-            <p>Description:{product?.description}</p>
-            <img src={product?.image} alt="img" />
-            <p>Price: {product?.price}</p>
-            <p>Category: {product?.category}</p>
-            {/* <h6>{params.id}</h6>    */}
+        <div className="product-container">
+            <div className="product-content">
+                <img src={product?.image} alt="Product" className="product-image" />
+                <div className="product-info">
+                    <h1 className="product-title">{product?.title}</h1>
+                    <p className="product-description">{product?.description}</p>
+                    <p className="product-price">Price: ${product?.price}</p>
+                    <p className="product-category">Category: {product?.category}</p>
+                </div>
+            </div>
+            <div className="product-buttons">
+                <button className="product-button">В корзину</button>
+                <button className="product-button">Купить</button>
+            </div>
         </div>
     )
 }
