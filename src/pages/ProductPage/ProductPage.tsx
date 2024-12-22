@@ -9,20 +9,20 @@ export function ProductPage (){
     const {product} = useProductById(Number(params.id))
 
     return (
-        <div className="productContainer">
+        <div className="product-container">
             {/* <div style={{width:419, height:474}} > */}
-                <img className="productImage" src={product?.image} alt="img"/>
+                <img className="product-image" src={product?.image} alt="img"/>
             {/* </div> */}
-            <div className="detailBox">
-                <div className="textBox">
+            <div className="detail-box">
+                <div className="text-box">
                     <h1 className="title">{product?.title}</h1>
                     <p className="description">{product?.description}</p>
-                    <p className="priceText">Price: {product?.price}</p>
+                    <p className="price-text">Price: {product?.price}</p>
                     <p className="category">Category: {product?.category}</p>
                 </div>
                 <div className="buttons">
-                    <button className="btn">Додати до кошика</button>
-                    <button className="btn">Купити</button>
+                    <button className="purchase-btn">Додати до кошика</button>
+                    <button className="purchase-btn">Купити</button>
                 </div>
             </div>
             
