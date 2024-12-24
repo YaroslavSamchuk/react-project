@@ -45,7 +45,7 @@ export function ProductsList(){
                 </select>
             </div>
             
-            {loading === true ? <div>
+            {loading === true ? <div className="loader">
                 <TailSpin
                         visible={true}
                         height="80"
