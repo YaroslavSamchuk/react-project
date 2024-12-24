@@ -4,12 +4,14 @@ import { useState, useEffect } from "react"
 import "./ProductsList.css"
 import { useProducts } from "../../hooks/useProducts"
 import { ProductCard } from "./ProductCard/ProductCard"
+import { TailSpin } from "react-loader-spinner"
 
 // https://fakestoreapi.com/products/categories
 
 
 export function ProductsList(){
-    const {products} = useProducts()  // []
+    //    {products, loading }   = {products: [], loading: boolean}
+    const {products, loading, error} = useProducts()
     const [selectedCategory, setSelectedCategory] = useState("All")
     const [filteredProducts, setFilteredProducts] = useState(products) // []
 
@@ -25,6 +27,9 @@ export function ProductsList(){
         }
     }, [selectedCategory, products])
 
+    // condition ? result if true : result else
+    // name == "Nikita" ? <div>Nikita tuta</div> : <div>Ne Nikita</div
+    // age >= 18 ? <div>You r over 18</div> : <div> You r not over 18</div>
     return (
         <div className="products">
             <div className="selectDiv">
@@ -40,7 +45,22 @@ export function ProductsList(){
                 </select>
             </div>
             
-            <div className="productsDiv">
+            {loading === true ? <div>
+                <TailSpin
+                        visible={true}
+                        height="80"
+                        width="80"
+                        color="#4fa94d"
+                        ariaLabel="tail-spin-loading"
+                        radius="1"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        /></div> : 
+        
+            error !== "" ? <div>
+                {error} 
+            </div> :
+                <div className="productsDiv">
                 {filteredProducts.map((product) => {
                     // key - специальный ключ (id), который используеться при отображении массивов
                     // этот ключ позваляет определить, какой элемент был удален добавлен и т. п.
@@ -51,7 +71,7 @@ export function ProductsList(){
                             key={product.id}
                             id={product.id} />
                 })}
-            </div>
+            </div>}
         </div>
     )
 }

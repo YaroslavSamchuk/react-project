@@ -1,32 +1,26 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 import { useProductById } from "../../hooks/useProductById"
 import "./ProductPage.css"
 
-
-export function ProductPage (){
+export function ProductPage() {
     const params = useParams()
-    // NaN почитать
-    const {product} = useProductById(Number(params.id))
+    const { product } = useProductById(Number(params.id))
 
     return (
         <div className="product-container">
-            {/* <div style={{width:419, height:474}} > */}
-                <img className="product-image" src={product?.image} alt="img"/>
-            {/* </div> */}
-            <div className="detail-box">
-                <div className="text-box">
-                    <h1 className="title">{product?.title}</h1>
-                    <p className="description">{product?.description}</p>
-                    <p className="price-text">Price: {product?.price}</p>
-                    <p className="category">Category: {product?.category}</p>
-                </div>
-                <div className="buttons">
-                    <button className="purchase-btn">Додати до кошика</button>
-                    <button className="purchase-btn">Купити</button>
+            <div className="product-content">
+                <img src={product?.image} alt="Product" className="product-image" />
+                <div className="product-info">
+                    <h1 className="product-title">{product?.title}</h1>
+                    <p className="product-description">{product?.description}</p>
+                    <p className="product-price">Price: ${product?.price}</p>
+                    <p className="product-category">Category: {product?.category}</p>
                 </div>
             </div>
-            
-            {/* <h6>{params.id}</h6>    */}
+            <div className="product-buttons">
+                <button className="product-button">В корзину</button>
+                <button className="product-button">Купить</button>
+            </div>
         </div>
     )
 }
