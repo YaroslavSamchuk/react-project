@@ -90,3 +90,11 @@
     background-color: #EAEAEA;
     transform: scale(1.05);
 }
+
+.product-loader{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 90vw;
+}
