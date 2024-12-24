@@ -17,11 +17,14 @@ export function useCategories(){
                 if (error instanceof Error) {
                     setError(error.message)
                 }
+                console.log(error)
+
             } finally {
                 setLoading(false)
             }
         }
         fetchCategories()
+        
     }, [])
     return {categories: categories, loading: loading, error: error}
 }

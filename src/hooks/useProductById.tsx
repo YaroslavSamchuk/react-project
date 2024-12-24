@@ -29,6 +29,7 @@ export function useProductById(id: number | undefined){
             
         }
         fetchProduct()
+
     }, [id])
     return {product: product, loading: loading, error: error}
 }
