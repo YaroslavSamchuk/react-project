@@ -1,39 +1,33 @@
-import "./SearchBar.css"
-import { useState, useRef, useEffect } from "react"
+import { Modal } from "../Modal/Modal";
+import "./SearchBar.css";
+import { useState, useRef, useEffect } from "react";
 
 export function SearchBar() {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-	const modalRef = useRef<HTMLDivElement| null>(null)
-	const inputRef = useRef<HTMLInputElement| null>(null)
-    const inputOnFocus = () => {
-        if(isModalOpen) {
-            setIsModalOpen(false)
-        } else {
-            setIsModalOpen(true)
-        }
-    }
-	
-	useEffect(()=>{
-		function handleClickOutside(event: MouseEvent){
-				if(event.target != modalRef.current && inputRef.current != event.target){
-					setIsModalOpen(false)
-					
-			}
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const modalContainerRef = useRef<HTMLDivElement | null>(null);
+	const inputOnFocus = () => {
+		if (isModalOpen) {
+			setIsModalOpen(false);
+		} else {
+			setIsModalOpen(true);
 		}
-		document.addEventListener("click", handleClickOutside )
-		return()=>{
-			document.removeEventListener("click", handleClickOutside)
-		}
-
-
-	},[])
-    
+	};
 	return (
-		<div className="searchBar">
-			<input type="text" onFocus={inputOnFocus} ref={inputRef} placeholder="Пошук продукта" />
+		<div
+			className="searchBar"
+			ref={modalContainerRef}
+			onClick={(event) => {
+				event.stopPropagation();
+			}}
+		>
+			<input
+				type="text"
+				onFocus={inputOnFocus}
+				placeholder="Пошук продукта"
+			/>
 			<svg
 				width="28"
-                className="search-icon"
+				className="search-icon"
 				height="28"
 				viewBox="0 0 28 28"
 				fill="none"
@@ -47,9 +41,21 @@ export function SearchBar() {
 					stroke-linejoin="round"
 				/>
 			</svg>
-            {isModalOpen ? (
-                <div ref={modalRef}>Opened</div>
-            ) : null}
+			{isModalOpen ? (
+				<Modal
+					doCloseOutside={false}
+					onClose={() => {
+						setIsModalOpen(false);
+					}}
+					container={
+						modalContainerRef.current
+							? modalContainerRef.current
+							: undefined
+					}
+				>
+					Opened
+				</Modal>
+			) : null}
 		</div>
 	);
 }
