@@ -1,11 +1,16 @@
+import "./Modal.css"
+
 import { ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+
+
 
 interface IModalProps {
 	children: ReactNode;
 	doCloseOutside: boolean;
 	onClose: () => void;
 	container?: Element;
+	className: string;
 }
 
 export function Modal(props: IModalProps) {
@@ -14,6 +19,7 @@ export function Modal(props: IModalProps) {
 		doCloseOutside,
 		onClose,
 		container = document.body,
+		className,
 	} = props;
 
 	const modalRef = useRef<HTMLDivElement | null>(null);
@@ -31,11 +37,12 @@ export function Modal(props: IModalProps) {
 				document.removeEventListener("click", handleClickOutside);
 			};
 		}
-	}, []);
+	}, []); 
+    
 	return createPortal(
-		<div ref={modalRef} className="modal">
+		(<div ref={modalRef} className={"modal " + className} >
 			{children}
-		</div>,
+		</div>),
 		container
 	);
 }
