@@ -1,26 +1,27 @@
-import { ReactNode, useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
-//создаем интерфейс , пропс 
+import "./Modal.css"
+import { ReactNode, useEffect, useRef } from "react"
+import { createPortal } from "react-dom"
+
+
 interface IModalProps {
-	//задаем в интервейсе что он будет "дочерним"
-	children: ReactNode;
-	//создаем переменную? состояние тру фолз для состояния модального окна
-	doCloseOutside: boolean;
-	onClose: () => void;
-	container?: Element;
+	children: ReactNode
+	doCloseOutside: boolean
+	onClose: () => void
+	container?: Element
+	className: string
 }
-//
+
 export function Modal(props: IModalProps) {
-	//деструктуризируем пропс
 	const {
 		children,
 		doCloseOutside,
 		onClose,
 		container = document.body,
-	} = props;
-//создаем хук useRef для модалки
+		className,
+	} = props
+
 	const modalRef = useRef<HTMLDivElement | null>(null);
-	//функция закрытия окна при нажатии за модалкой
+
 	function handleClickOutside(event: MouseEvent) {
 		if (event.target != modalRef.current) {
 			onClose();
@@ -32,14 +33,14 @@ export function Modal(props: IModalProps) {
 			document.addEventListener("click", handleClickOutside);
 			return () => {
 				document.removeEventListener("click", handleClickOutside);
-			};
+			}
 		}
-	}, []);
-	//портал позволяюший возвысить див в иерархии что бы он был поверх остальных елементов
+	}, []) 
+    
 	return createPortal(
-		<div ref={modalRef} className="modal">
+		(<div ref={modalRef} className={"modal " + className} >
 			{children}
-		</div>,
+		</div>),
 		container
-	);
+	)
 }
