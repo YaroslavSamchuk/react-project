@@ -1,14 +1,17 @@
 import { Modal } from "../Modal/Modal";
 import "./SearchBar.css";
 import { useState, useRef, useEffect } from "react";
-import { useProducts } from "../../hooks/useProducts";
+import { IProduct, useProducts } from "../../hooks/useProducts";
 import { Link } from "react-router-dom";
 
 export function SearchBar() {
 	const { products } = useProducts();
-
-	const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 	const modalContainerRef = useRef<HTMLDivElement | null>(null);
+    const [entered, setEntered] = useState("");
+    const [filteredItems, setFilteredItems] = useState<IProduct[]>([])
+    // const [value, setValue] = useState<string>("")
+
 	const inputOnFocus = () => {
 		if (isModalOpen) {
 			setIsModalOpen(false);
@@ -16,7 +19,24 @@ export function SearchBar() {
 			setIsModalOpen(true);
 		}
 	};
-	const [value, setValue] = useState<string>("")
+
+    useEffect(() => {
+        if (entered.trim() === "") {
+            setFilteredItems([]);
+          return;
+        } else {
+          const filtered = products.filter((item) => {
+            return item.title.toLowerCase().includes(entered.toLowerCase());
+          });
+          setFilteredItems(filtered);
+        }
+      }, [entered, products]);
+
+    function inputChanges(event: React.ChangeEvent<HTMLInputElement>){
+        const value = event.target.value
+        setEntered(value)
+    } 
+	
 	return (
 		<div
 			className="searchBar"
@@ -29,11 +49,9 @@ export function SearchBar() {
 				type="text"
 				onFocus={inputOnFocus}
 				placeholder="Пошук продукта"
-				onInput={(event) => {
-
-					setValue((event.target as HTMLInputElement).value)
+				onInput={inputChanges}
                     // Реализовать фильтрацию
-				}}
+                    
 			/>
 			<svg
 				width="28"
@@ -64,7 +82,7 @@ export function SearchBar() {
 					}
 					className="searchBarModal"
 				>
-					{products.map((product) => {
+					{filteredItems.map((product) => {
 						return (
 							<div className="item">
 								<svg
