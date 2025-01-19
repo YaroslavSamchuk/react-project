@@ -1,31 +1,45 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 import { useProductById } from "../../hooks/useProductById"
 import "./ProductPage.css"
+import { TailSpin } from "react-loader-spinner"
+import { useProducts } from "../../hooks/useProducts"
 
-export function ProductPage (){
+export function ProductPage() {
     const params = useParams()
-    // NaN почитать
-    const {product} = useProductById(Number(params.id))
+    const { product, loading, error } = useProductById(Number(params.id))
 
     return (
-        <div className="ProductPage-div">
-            <span className="ProductPage-span">
-                <div className="ProductPage-image-div">
-                    <img className="ProductPage-image" src={product?.image} alt="img" />
+        <div>
+        {loading === true ? 
+            <div className="product-loader">
+                <TailSpin
+                        visible={true}
+                        height="80"
+                        width="80"
+                        color="#4fa94d"
+                        ariaLabel="tail-spin-loading"
+                        radius="1"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        /></div> : 
+            error !== "" ? <div>
+                {error} 
+            </div> :
+            <div className="product-container">
+            <div className="product-content">
+                <img src={product?.image} alt="Product" className="product-image" />
+                <div className="product-info">
+                    <h1 className="product-title">{product?.title}</h1>
+                    <p className="product-description">{product?.description}</p>
+                    <p className="product-price">Price: ${product?.price}</p>
+                    <p className="product-category">Category: {product?.category}</p>
                 </div>
-                <div className="Productpage-content">
-                    <h1>Product: {product?.title}</h1>
-                    <p>Description:{product?.description}</p>
-                    <p>Price: {product?.price}</p>
-                    <p>Category: {product?.category}</p>
-                    <span className="span1">
-                        <button className="button-card">В корзину</button>
-                        <button className="button-buy">Купить</button>
-                    </span>
-                </div>
-                
-            </span>
-            {/* <h6>{params.id}</h6>    */}
-        </div>
+            </div>
+            <div className="product-buttons">
+                <button className="product-button">В корзину</button>
+                <button className="product-button">Купить</button>
+            </div>
+        </div>}
+    </div>
     )
 }
