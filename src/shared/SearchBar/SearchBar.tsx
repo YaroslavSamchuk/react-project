@@ -8,6 +8,9 @@ export function SearchBar() {
 	const { products } = useProducts();
 	const [filteredProducts, setFilteredProducts] = useState(products);
 
+	useEffect(() => {
+        setFilteredProducts(products);
+    }, [products]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const modalContainerRef = useRef<HTMLDivElement | null>(null);
 	const inputOnFocus = () => {
@@ -36,6 +39,7 @@ export function SearchBar() {
 					// setValue((event.target as HTMLInputElement).value)
 					// setValue(newValue)
 					setFilteredProducts(products.filter(product => product.title.toLowerCase().startsWith(newValue)));
+					
 				}}
 				
 			/>
