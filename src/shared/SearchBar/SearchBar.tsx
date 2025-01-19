@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 
 export function SearchBar() {
 	const { products } = useProducts();
+	const [filteredProducts, setFilteredProducts] = useState(products);
 
+	useEffect(() => {
+        setFilteredProducts(products);
+    }, [products]);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const modalContainerRef = useRef<HTMLDivElement | null>(null);
 	const inputOnFocus = () => {
@@ -30,10 +34,14 @@ export function SearchBar() {
 				onFocus={inputOnFocus}
 				placeholder="Пошук продукта"
 				onInput={(event) => {
+					const newValue = (event.target as HTMLInputElement).value.toLowerCase();
 
-					setValue((event.target as HTMLInputElement).value)
-                    // Реализовать фильтрацию
+					// setValue((event.target as HTMLInputElement).value)
+					// setValue(newValue)
+					setFilteredProducts(products.filter(product => product.title.toLowerCase().startsWith(newValue)));
+					
 				}}
+				
 			/>
 			<svg
 				width="28"
@@ -64,7 +72,7 @@ export function SearchBar() {
 					}
 					className="searchBarModal"
 				>
-					{products.map((product) => {
+					{filteredProducts.map((filteredProducts) => {
 						return (
 							<div className="item">
 								<svg
@@ -83,9 +91,9 @@ export function SearchBar() {
 										stroke-linejoin="round"
 									/>
 								</svg>
-								<img src={product.image} alt=""  className="search-item-img"/>
-								<Link to={"/product/" + product.id} className="search-item">
-									{product.title.slice(0, 50)}...
+								<img src={filteredProducts.image} alt=""  className="search-item-img"/>
+								<Link to={"/product/" + filteredProducts.id} className="search-item">
+									{filteredProducts.title.slice(0, 50)}...
 								</Link>
 							</div>
 						);
